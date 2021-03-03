@@ -7,18 +7,7 @@ import Recorder from './Recorder'
 function App() {
   return (
     <div className="App">
-      <Manager>
-        <AudioBtn />
-        <AudioBtn />
-        <AudioBtn />
-        <AudioBtn />
-        <AudioBtn />
-        <AudioBtn />
-        <AudioBtn />
-        <AudioBtn />
-        <AudioBtn />
-        <Recorder />
-      </Manager>
+      <Manager />
     </div>
   );
 }
