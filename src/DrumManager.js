@@ -7,6 +7,7 @@ import {bank1, bank2} from './soundBank';
 class Manager extends React.Component {
     constructor(props) {
         super(props);
+
         this.state = {
             record: false,
             currentRec: [],
@@ -15,15 +16,19 @@ class Manager extends React.Component {
             currentTrack: null,
 
             volume: 50,
-            tempo: 1,
+            tempo: 100,
 
             bankId: 0
         };
+
         this.banks = [bank1, bank2];
+
         this.playSound = this.playSound.bind(this);
         this.switchRecord = this.switchRecord.bind(this);
         this.addTrack = this.addTrack.bind(this);
         this.selectTrack = this.selectTrack.bind(this);
+        this.changeVolume = this.changeVolume.bind(this);
+        this.changeTempo = this.changeTempo.bind(this);
         this.switchBank = this.switchBank.bind(this);
     }
 
@@ -62,19 +67,28 @@ class Manager extends React.Component {
     }
 
     selectTrack(event) {
-
+        event.target.style = "background-color: grey";
+        this.setState((state) => (
+            {currentTrack: event.target.dataset.index}
+        ))
     }
 
     changeVolume(event) {
-
+        this.setState((state) => (
+            {volume: event.target.value}
+        ));
     }
 
     changeTempo(event) {
-
+        this.setState((state) => (
+            {tempo: event.target.value}
+        ));
     }
 
     switchBank(event) {
-
+        this.setState((state) => (
+            {bankId: (state.bankId > 0) ? 0 : 1}
+        ))
     }
 
     render() {
@@ -98,17 +112,16 @@ class Manager extends React.Component {
                     )
                 )
             }
-            
+
             <Recorder 
                 record={this.state.record}
                 switchRecord={this.switchRecord}
                 addTrack={this.addTrack}
                 selectTrack={this.selectTrack}
+                tracks={this.state.tracks}
                 currentTrack={this.state.currentTrack}
                 volume={this.state.volume}
                 tempo={this.state.tempo} />
-            record: {this.state.currentRec.length}<br />
-            number of tracks: {this.state.tracks.length}
         </div>
         )
     }

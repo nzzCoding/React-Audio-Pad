@@ -7,7 +7,7 @@ class ManagerOptions extends React.Component {
 
     render() {
         return (
-            <div className="pad-options">
+            <div className="audio-pad-options">
                 <button className="bank-choice" onClick={this.props.switchBank}>
                     Switch bank
                 </button>
