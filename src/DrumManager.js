@@ -1,6 +1,7 @@
 import React from 'react';
 import AudioBtn from './AudioBtn';
 import Recorder from './Recorder';
+import ManagerOptions from './ManagerOptions'
 import {bank1, bank2} from './soundBank';
 
 class Manager extends React.Component {
@@ -23,6 +24,7 @@ class Manager extends React.Component {
         this.switchRecord = this.switchRecord.bind(this);
         this.addTrack = this.addTrack.bind(this);
         this.selectTrack = this.selectTrack.bind(this);
+        this.switchBank = this.switchBank.bind(this);
     }
 
     playSound(event) {
@@ -78,7 +80,13 @@ class Manager extends React.Component {
     render() {
         return (
         <div className="manager">
-            this is the manager component
+            <ManagerOptions
+                volume={this.state.volume}
+                tempo={this.state.tempo}
+                switchBank={this.switchBank}
+                changeVolume={this.changeVolume}
+                changeTempo={this.changeTempo} />
+
             {/* Mapping the buttons to their corresponding audio*/}
             {this.banks[this.state.bankId]//current sound bank
                 .map((audio_url, index) => (
@@ -90,12 +98,15 @@ class Manager extends React.Component {
                     )
                 )
             }
+            
             <Recorder 
                 record={this.state.record}
                 switchRecord={this.switchRecord}
                 addTrack={this.addTrack}
                 selectTrack={this.selectTrack}
-                currentTrack={this.state.currentTrack} />
+                currentTrack={this.state.currentTrack}
+                volume={this.state.volume}
+                tempo={this.state.tempo} />
             record: {this.state.currentRec.length}<br />
             number of tracks: {this.state.tracks.length}
         </div>
