@@ -7,7 +7,10 @@ class AudioBtn extends React.Component {
     render() {
         return (
         <div className="audio-pad">
-            <button className="audio-btn" data-audio_url={this.props.audio_url}>
+            <button 
+                className="audio-btn" 
+                data-audio_url={this.props.audio_url}
+                onClick={this.props.playSound}>
                 Play at {this.props.volume}
             </button>
         </div>

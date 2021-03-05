@@ -25,7 +25,7 @@ class Manager extends React.Component {
     }
 
     playSound(event) {
-
+        
     }
 
     switchRecord(event) {
