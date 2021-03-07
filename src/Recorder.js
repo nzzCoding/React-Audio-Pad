@@ -8,13 +8,14 @@ function TrackList(props) {
                     key={"track" + index} 
                     data-index={index}
                     onClick={props.selectTrack}>
-                    track {index}
+                    track {index} {(index == props.currentTrack) ? "selection" : null}
                 </p>
                 )
             )}
         </div>
     )
 }
+
 class Recorder extends React.Component {
     render() {
         const record_msg = (this.props.record) ? "stop" : "start" //the msg to be prompted in button
@@ -32,7 +33,13 @@ class Recorder extends React.Component {
                 </button>
                 <TrackList 
                     tracks={this.props.tracks}
+                    currentTrack={this.props.currentTrack}
                     selectTrack={this.props.selectTrack} />
+                <button
+                    className="replay-btn"
+                    onClick={this.props.replayTrack}>
+                        replay the selected track
+                    </button>
             </div>
         )
     }

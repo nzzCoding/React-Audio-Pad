@@ -13,7 +13,7 @@ class Manager extends React.Component {
             currentRec: [],
 
             tracks: [],
-            currentTrack: null,
+            currentTrack: null,//null when no track have been selected, otherwise an integer
 
             volume: 50,
             tempo: 100,
@@ -27,6 +27,7 @@ class Manager extends React.Component {
         this.switchRecord = this.switchRecord.bind(this);
         this.addTrack = this.addTrack.bind(this);
         this.selectTrack = this.selectTrack.bind(this);
+        this.replayTrack = this.replayTrack.bind(this);
         this.changeVolume = this.changeVolume.bind(this);
         this.changeTempo = this.changeTempo.bind(this);
         this.switchBank = this.switchBank.bind(this);
@@ -67,10 +68,37 @@ class Manager extends React.Component {
     }
 
     selectTrack(event) {
-        event.target.style = "background-color: grey";
-        this.setState((state) => (
-            {currentTrack: event.target.dataset.index}
-        ))
+        if (event.target.dataset.index != this.state.currentTrack) {
+            //if the indices don't match a new track is selected, highlight it and update state
+            this.setState((state) => (
+                {currentTrack: event.target.dataset.index}
+                )
+            )
+        } else {
+            this.setState((state) => (
+                {currentTrack: null}
+                )
+            );
+        }
+        
+    }
+
+    replayTrack(event) {
+        if (this.state.currentTrack != null) {
+            const track = this.state.tracks[this.state.currentTrack];
+            //track is an array containing objects storing audio_url and time
+            const initialTime = track[0].time;
+            const timeStamp = track.map(
+                (sound_info) => Math.ceil(
+                    (sound_info.time - initialTime)/(this.state.tempo/100)
+                    )
+            );//timeStamp is an array containing the time at which each sound need to be played
+            for (let i=0; i<track.length; i++) {
+                let sound = new Audio(track[i].audio_url);
+                sound.volume = (this.state.volume/100).toFixed(2);
+                setTimeout(() => sound.play(), timeStamp[i]);
+            }
+        }
     }
 
     changeVolume(event) {
@@ -118,10 +146,9 @@ class Manager extends React.Component {
                 switchRecord={this.switchRecord}
                 addTrack={this.addTrack}
                 selectTrack={this.selectTrack}
+                replayTrack={this.replayTrack}
                 tracks={this.state.tracks}
-                currentTrack={this.state.currentTrack}
-                volume={this.state.volume}
-                tempo={this.state.tempo} />
+                currentTrack={this.state.currentTrack}/>
         </div>
         )
     }
