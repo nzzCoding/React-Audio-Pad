@@ -1,13 +1,77 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  margin: O;
+  padding: 0;
+  height: 100%;
+  width: 100%;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
 }
+
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background-color: red;
+}
+
+.manager {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+}
+
+/*audio-pad-options div and its elements */
+.audio-pad-options {
+  padding: 1em;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  background-color: yellow;
+  grid-column: 1 / 11;
+  grid-row: 1 / 2;
+}
+
+.range-options {
+  display: flex;
+  flex-direction: column;
+  grid-row: 3 / 4;
+}
+
+.bank-options {
+  grid-column: 10 / 11;
+  grid-row: 3 / 4;
+}
+/*end of audio-pad-options div and its elements */
+
+/*audio-pad div and its elements */
+.audio-pad {
+  grid-column: 6 / 11;
+  grid-row: 2 / 11;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: reeat(10, 1fr);
+  background-color: green;
+}
+/*end of audio-pad div and its elements */
+
+/*recorder div and its elements */
+.recorder {
+  background-color: cyan;
+  grid-column: 1 / 3;
+  grid-row: 2 / 4;
+}
+
+.track-list {
+  height: 50%;
+  width: 100%;
+  background-color: grey;
+}
+/*end of recorder div and its elements */

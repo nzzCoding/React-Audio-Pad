@@ -129,17 +129,19 @@ class Manager extends React.Component {
                 changeVolume={this.changeVolume}
                 changeTempo={this.changeTempo} />
 
-            {/* Mapping the buttons to their corresponding audio*/}
-            {this.banks[this.state.bankId]//current sound bank
-                .map((audio_url, index) => (
-                    <AudioBtn
-                        key={audio_url + index}
-                        audio_url={audio_url}
-                        volume={this.state.volume}
-                        playSound={this.playSound} />
+            <div className="audio-pad">
+                {/* Mapping the buttons to their corresponding audio*/}
+                {this.banks[this.state.bankId]//current sound bank
+                    .map((audio_url, index) => (
+                        <AudioBtn
+                            key={audio_url + index}
+                            audio_url={audio_url}
+                            volume={this.state.volume}
+                            playSound={this.playSound} />
+                        )
                     )
-                )
-            }
+                }
+            </div>
 
             <Recorder 
                 record={this.state.record}

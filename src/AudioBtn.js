@@ -6,7 +6,7 @@ class AudioBtn extends React.Component {
     }
     render() {
         return (
-        <div className="audio-pad">
+        <div className="audio-btn-wrap">
             <button 
                 className="audio-btn" 
                 data-audio_url={this.props.audio_url}
