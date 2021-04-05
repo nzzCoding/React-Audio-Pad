@@ -135,6 +135,7 @@ class Manager extends React.Component {
                     .map((audio_url, index) => (
                         <AudioBtn
                             key={audio_url + index}
+                            btnId={`audio-btn-${index}`}
                             audio_url={audio_url}
                             volume={this.state.volume}
                             playSound={this.playSound} />

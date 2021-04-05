@@ -10,16 +10,16 @@ class ManagerOptions extends React.Component {
             <div className="audio-pad-options">
                 <div className="range-options">
                     <label className="volume-range">
-                        Set volume
                         <input 
                             type="range" min="0" max="100" 
                             onChange={this.props.changeVolume} />
+                            Set volume
                     </label>
                     <label className="tempo-range">
-                        Set tempo
                         <input
                             type="range" min="25" max="400"
                             onChange={this.props.changeTempo} />
+                            Set tempo
                     </label>
                 </div>
                 <button className="bank-options" onClick={this.props.switchBank}>
