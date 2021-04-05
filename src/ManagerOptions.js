@@ -1,4 +1,6 @@
-import React from 'react'
+import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMusic} from '@fortawesome/free-solid-svg-icons';
 
 class ManagerOptions extends React.Component {
     constructor(props) {
@@ -13,17 +15,19 @@ class ManagerOptions extends React.Component {
                         <input 
                             type="range" min="0" max="100" 
                             onChange={this.props.changeVolume} />
-                            Set volume
+                            Volume
                     </label>
                     <label className="tempo-range">
                         <input
                             type="range" min="25" max="400"
                             onChange={this.props.changeTempo} />
-                            Set tempo
+                            Tempo
                     </label>
                 </div>
-                <button className="bank-options" onClick={this.props.switchBank}>
-                    Switch bank
+                <button className="bank-options" 
+                        title="switch audio bank"
+                        onClick={this.props.switchBank}>
+                    <FontAwesomeIcon icon={faMusic} />
                 </button>
             </div>
         )

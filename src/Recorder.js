@@ -1,4 +1,6 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlay, faCircle, faStop, faPlus} from '@fortawesome/free-solid-svg-icons';
 
 function TrackList(props) {
     return (
@@ -9,7 +11,9 @@ function TrackList(props) {
                     className={(index == props.currentTrack) ? "track" : "track selected"}
                     data-index={index}
                     onClick={props.selectTrack}>
-                    track {index} {(index == props.currentTrack) ? "selection" : null}
+                    track {index} {(index == props.currentTrack) ? 
+                                   (<FontAwesomeIcon icon={faCircle} />) : 
+                                   null}
                 </p>
                 )
             )}
@@ -19,23 +23,28 @@ function TrackList(props) {
 
 class Recorder extends React.Component {
     render() {
-        const record_msg = (this.props.record) ? "stop" : "start" //the msg to be prompted in button
+        const [record_icon, record_status] = (this.props.record) ? //the icon to be prompted in button
+                                             [(<FontAwesomeIcon icon={faStop} />), "stop"] :
+                                             [(<FontAwesomeIcon icon={faCircle} />), "start"];
         return (
             <div className="recorder">
                 <button
                     className="record-btn"
+                    title={record_status + " recording"}
                     onClick={this.props.switchRecord}>
-                        {record_msg} recording
+                    {record_icon}
                 </button>
                 <button
                     className="add-track-btn"
+                    title="add recorded track"
                     onClick={this.props.addTrack}>
-                        add the recorded track
+                    <FontAwesomeIcon icon={faPlus} />
                 </button>
                 <button
                     className="replay-btn"
+                    title="replay selected track"
                     onClick={this.props.replayTrack}>
-                        replay the selected track
+                    <FontAwesomeIcon icon={faPlay} />
                 </button>
                 <TrackList 
                     tracks={this.props.tracks}
