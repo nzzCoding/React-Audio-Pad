@@ -55,6 +55,10 @@ body {
 
   border-radius: 0.3em 0.3em 0 0;
 }
+
+.bank-options svg path {
+  color: brown;
+}
 /*end of audio-pad-options div and its elements */
 
 /*audio-pad div and its elements */
@@ -134,16 +138,24 @@ body {
   border-radius: 1em;
 }
 
+.track-header {
+  margin: 0;
+  padding: 0.3em;
+  border-radius: 1em 1em 0 0;
+
+  display: flex;
+  justify-content: center;
+
+  color:rgb(157, 159, 161);
+  background-color: rgb(109, 99, 85);
+}
+
 .track {
   display: flex;
   justify-content: center;
 }
 
-.track svg {
-  align-self: flex-end;
-}
-
-.track svg path {
-  color: cyan;
+.selected {
+  background-color: rgb(188, 159, 143);
 }
 /*end of recorder div and its elements */

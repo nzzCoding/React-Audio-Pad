@@ -5,15 +5,14 @@ import { faPlay, faCircle, faStop, faPlus} from '@fortawesome/free-solid-svg-ico
 function TrackList(props) {
     return (
         <div className="track-list">
+            <h4 className="track-header">Recorded tracks</h4>
             {props.tracks.map((tracks, index) => (
-                <p 
+                <p
                     key={"track" + index} 
-                    className={(index == props.currentTrack) ? "track" : "track selected"}
+                    className={(index == props.currentTrack) ? "track selected" : "track"}
                     data-index={index}
                     onClick={props.selectTrack}>
-                    track {index} {(index == props.currentTrack) ? 
-                                   (<FontAwesomeIcon icon={faCircle} />) : 
-                                   null}
+                    track {index}
                 </p>
                 )
             )}
